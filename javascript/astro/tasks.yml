@@ -1,0 +1,43 @@
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+fileGroups:
+  sources:
+    - 'public/**/*'
+    - 'src/**/*'
+    - 'astro.config.*'
+  tests:
+    - 'tests/**/*'
+  other: []
+
+tasks:
+  astro:
+    command: 'astro'
+    local: true
+
+  build:
+    command: 'astro build'
+    inputs:
+      - '@group(sources)'
+      - '@group(other)'
+    outputs:
+      - 'dist'
+
+  check:
+    command: 'astro check'
+    inputs:
+      - '@group(sources)'
+      - '@group(other)'
+
+  dev:
+    command: 'astro dev'
+    local: true
+
+  preview:
+    command: 'astro preview'
+    deps:
+      - 'build'
+    local: true
+
+  sync:
+    command: 'astro sync'
+    local: true
