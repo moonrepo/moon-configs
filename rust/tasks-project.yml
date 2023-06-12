@@ -1,17 +1,13 @@
 $schema: 'https://moonrepo.dev/schemas/tasks.json'
 
-implicitInputs:
-  - 'Cargo.toml'
-
 fileGroups:
   sources:
     - 'Cargo.toml'
-    - 'crates/*/src/**/*'
-    - 'crates/*/Cargo.toml'
+    - 'src/**/*'
     - '/rust-toolchain.toml'
   tests:
-    - 'crates/*/benches/**/*'
-    - 'crates/*/tests/**/*'
+    - 'benches/**/*'
+    - 'tests/**/*'
   other: []
 
 tasks:
@@ -34,7 +30,7 @@ tasks:
     local: true
 
   check:
-    command: 'cargo check --workspace --all-targets'
+    command: 'cargo check --all-targets'
     inputs:
       - '@group(sources)'
       - '@group(tests)'
@@ -64,7 +60,7 @@ tasks:
     local: true
 
   lint: &lint
-    command: 'cargo clippy --workspace --all-targets'
+    command: 'cargo clippy --all-targets'
     inputs:
       - '@group(sources)'
       - '@group(tests)'
@@ -74,11 +70,11 @@ tasks:
 
   lint-fix:
     <<: *lint
-    command: 'cargo clippy --workspace --all-targets --fix --allow-dirty --allow-staged'
+    command: 'cargo clippy --all-targets --fix --allow-dirty --allow-staged'
     local: true
 
   test:
-    command: 'cargo nextest run --workspace'
+    command: 'cargo nextest run'
     inputs:
       - '@group(sources)'
       - '@group(tests)'
