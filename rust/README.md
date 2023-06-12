@@ -11,6 +11,12 @@ Choose the config appropriate for your Rust repository structure.
   - Not using Cargo workspaces (is a single Cargo crate) and `moon.yml` is relative to the
     `Cargo.lock` file.
 
+## Requirements
+
+- Uses [`nextest`](https://nexte.st/) for tests.
+- For workspaces, crates are organized in a `crates/` directory.
+- Config files (`.cargo`, `rust-toolchain.toml`, etc) are located at the repository root.
+
 ## Setup
 
 In your moon workspace, create a `.moon/tasks/tag-rust.yml` file, and paste the following contents
@@ -27,9 +33,3 @@ In your Rust projects that you'd like to inherit these tasks, add the following 
 # moon.yml
 tags: ['rust']
 ```
-
-## Requirements
-
-- Uses [`nextest`](https://nexte.st/) for tests.
-- For workspaces, crates are organized in a `crates/` directory.
-- Config files (`.cargo`, `rust-toolchain.toml`, etc) are located at the repository root.

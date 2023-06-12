@@ -1,0 +1,11 @@
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+fileGroups:
+  sources: []
+  tests: []
+  other: []
+
+tasks:
+  bin:
+    command: 'bin'
+    local: true
