@@ -1,3 +1,8 @@
+# moon configs
+
+This is a collection of community driven and maintained moon task configurations for popular
+programming languages, frameworks, libraries, and more.
+
 ## Usage
 
 ### Modifying inherited tasks
@@ -10,12 +15,12 @@ cases. For those outliers, you can modify the inherited tasks, or simply ignore 
 tags: ['configs', 'to', 'inherit']
 
 tasks:
-	build:
-		args: '--pass --additional --args'
+  build:
+    args: '--pass --additional --args'
 
 workspace:
-	inheritedTasks:
-		exclude: ['task-name']
+  inheritedTasks:
+    exclude: ['task-name']
 ```
 
 > Learn more about [task merging](https://moonrepo.dev/docs/concepts/task#merge-strategies) and
@@ -31,8 +36,8 @@ to further customize the inputs.
 tags: ['configs', 'to', 'inherit']
 
 fileGroups:
-	other:
-		- 'other/files/**/*'
+  other:
+    - 'other/files/**/*'
 ```
 
 > Learn more about [file groups](https://moonrepo.dev/docs/concepts/file-group).
