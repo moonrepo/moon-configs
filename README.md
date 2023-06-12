@@ -5,6 +5,13 @@ programming languages, frameworks, libraries, and more.
 
 ## Usage
 
+This repository provides task configuration presets, which can be inherited in your moon projects
+through our
+[configuration sharing and extending feature](https://moonrepo.dev/docs/guides/sharing-config).
+
+Browse the repository for the configuration you would like to use, and refer to the setup
+instructions in the associated `README`.
+
 ### Modifying inherited tasks
 
 The config presets work great as a standard solution, but they aren't designed to accomdate all use
