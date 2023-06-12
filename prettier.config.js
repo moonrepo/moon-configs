@@ -1,8 +1,8 @@
 module.exports = {
-  embeddedLanguageFormatting: "auto",
-  endOfLine: "lf",
+  embeddedLanguageFormatting: 'auto',
+  endOfLine: 'lf',
   printWidth: 100,
-  proseWrap: "always",
+  proseWrap: 'always',
   singleQuote: true,
   tabWidth: 2,
   useTabs: false,
