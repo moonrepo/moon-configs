@@ -1,0 +1,35 @@
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+fileGroups:
+  sources:
+    - 'app/**/*'
+    - 'public/**/*'
+    - 'remix.config.*'
+    - 'remix.env.d.ts'
+  tests:
+    - 'tests/**/*'
+  other: []
+
+tasks:
+  remix:
+    command: 'remix'
+    local: true
+
+  build:
+    command: 'remix build'
+    inputs:
+      - '@group(sources)'
+      - '@group(other)'
+    outputs:
+      - '.cache'
+      - 'build'
+
+  dev:
+    command: 'remix dev'
+    local: true
+
+  start:
+    command: 'remix-serve ./build'
+    deps:
+      - 'build'
+    local: true

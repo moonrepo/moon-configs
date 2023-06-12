@@ -6,6 +6,6 @@ fileGroups:
   other: []
 
 tasks:
-  bin:
-    command: 'bin'
+  <bin>:
+    command: '<bin>'
     local: true
