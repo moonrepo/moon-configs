@@ -1,0 +1,32 @@
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+fileGroups:
+  vitest:
+    - 'src/**/*'
+    - 'vitest.config.*'
+  sources: []
+  tests:
+    - 'tests/**/*'
+
+tasks:
+  # Run unit tests
+  test:
+    command:
+      - 'vitest'
+      - 'run'
+      # Dont fail if a project has no tests
+      - '--passWithNoTests'
+    inputs:
+      - '@group(vitest)'
+      - '@group(sources)'
+      - '@group(tests)'
+
+  # Run with code coverage
+  test-cov:
+    extends: 'test'
+    args: '--coverage'
+
+  # Watch for test changes
+  test-watch:
+    command: 'vitest watch'
+    local: true
