@@ -1,0 +1,42 @@
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
+
+fileGroups:
+  svelte:
+    - 'src/**/*'
+    - 'static/**/*'
+    - 'svelte.config.*'
+    - 'vite.config.*'
+    - 'tsconfig.json'
+  sources: []
+  tests:
+    - 'tests/**/*'
+
+tasks:
+  # Build the application
+  build:
+    command: 'vite build'
+    inputs:
+      - '@group(svelte)'
+      - '@group(sources)'
+    outputs:
+      - '.svelte-kit'
+
+  # Run the typechecker
+  check:
+    command: 'svelte-check'
+    inputs:
+      - '@group(svelte)'
+      - '@group(sources)'
+      - '@group(tests)'
+
+  # Run the development server
+  dev:
+    command: 'vite dev'
+    local: true
+
+  # Preview the built application
+  preview:
+    command: 'vite preview'
+    deps:
+      - 'build'
+    local: true
