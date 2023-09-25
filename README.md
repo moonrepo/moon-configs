@@ -14,17 +14,19 @@ instructions in the associated `README`.
 
 ### Modifying inherited tasks
 
-The config presets work great as a standard solution, but they aren't designed to accomdate all use
+The config presets work great as a standard solution, but they aren't designed to accomodate all use
 cases. For those outliers, you can modify the inherited tasks, or simply ignore them.
 
 ```yaml
 # moon.yml
 tags: ['configs', 'to', 'inherit']
 
+# Merge with additional args
 tasks:
   build:
     args: '--pass --additional --args'
 
+# Ignore the task entirely
 workspace:
   inheritedTasks:
     exclude: ['task-name']
@@ -35,15 +37,15 @@ workspace:
 
 ### Extending file groups
 
-All config presets provide an `other` file group, that all tasks in the preset inherit, allowing you
-to further customize the inputs.
+All config presets provide `sources` and `tests` file groups, that all tasks in the preset inherit,
+allowing you to further customize the inputs.
 
 ```yaml
 # moon.yml
 tags: ['configs', 'to', 'inherit']
 
 fileGroups:
-  other:
+  sources:
     - 'other/files/**/*'
 ```
 

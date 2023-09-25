@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Next.js >= v13.
+- Next.js >= v12.
 
 ## Setup
 

@@ -4,15 +4,16 @@ implicitInputs:
   - 'Cargo.toml'
 
 fileGroups:
-  sources:
+  cargo:
     - 'Cargo.toml'
     - 'crates/*/src/**/*'
     - 'crates/*/Cargo.toml'
+    - '/.cargo/config.toml'
     - '/rust-toolchain.toml'
+  sources: []
   tests:
     - 'crates/*/benches/**/*'
     - 'crates/*/tests/**/*'
-  other: []
 
 tasks:
   cargo:
@@ -22,9 +23,8 @@ tasks:
   build: &build
     command: 'cargo build'
     inputs:
+      - '@group(cargo)'
       - '@group(sources)'
-      - '@group(other)'
-      - '/.cargo/config.toml'
     env: &env
       CARGO_TERM_COLOR: 'always'
 
@@ -36,25 +36,25 @@ tasks:
   check:
     command: 'cargo check --workspace --all-targets'
     inputs:
+      - '@group(cargo)'
       - '@group(sources)'
       - '@group(tests)'
-      - '@group(other)'
     env: *env
 
   dev:
     command: 'cargo run'
     inputs:
+      - '@group(cargo)'
       - '@group(sources)'
-      - '@group(other)'
     local: true
     env: *env
 
   format: &format
     command: 'cargo fmt --all --check'
     inputs:
+      - '@group(cargo)'
       - '@group(sources)'
       - '@group(tests)'
-      - '@group(other)'
       - '/rustfmt.toml'
     env: *env
 
@@ -66,9 +66,9 @@ tasks:
   lint: &lint
     command: 'cargo clippy --workspace --all-targets'
     inputs:
+      - '@group(cargo)'
       - '@group(sources)'
       - '@group(tests)'
-      - '@group(other)'
       - '/clippy.toml'
     env: *env
 
@@ -80,8 +80,8 @@ tasks:
   test:
     command: 'cargo nextest run --workspace'
     inputs:
+      - '@group(cargo)'
       - '@group(sources)'
       - '@group(tests)'
-      - '@group(other)'
       - '/.config/nextest.*'
     env: *env
