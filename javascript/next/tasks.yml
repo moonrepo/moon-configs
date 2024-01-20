@@ -8,8 +8,7 @@ fileGroups:
     - 'src/**/*'
     - 'next-env.d.ts'
     - 'next.config.*'
-  sources:
-    - []
+  sources: []
   tests:
     - 'tests/**/*'
 
