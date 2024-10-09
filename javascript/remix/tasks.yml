@@ -18,7 +18,7 @@ tasks:
 
   # Build the application
   build:
-    command: 'remix build'
+    command: 'remix vite:build'
     inputs:
       - '@group(remix)'
       - '@group(sources)'
@@ -28,12 +28,12 @@ tasks:
 
   # Run the development server
   dev:
-    command: 'remix dev'
+    command: 'remix vite:dev'
     local: true
 
   # Serve the built application
   start:
-    command: 'remix-serve ./build'
+    command: 'remix-serve ./build/server/index.js'
     deps:
       - 'build'
     local: true
