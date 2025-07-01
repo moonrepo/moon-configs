@@ -1,14 +1,10 @@
 $schema: "https://moonrepo.dev/schemas/tasks.json"
 
 fileGroups:
-  next:
-    - "app/**/*"
-    - "pages/**/*"
-    - "public/**/*"
+  sources: 
     - "src/**/*"
-    - "next-env.d.ts"
-    - "medusa-config.*"
-  sources: []
+    - "medusa-config.(js|ts)"
+    - "instrumentation.(js|ts)"
   tests:
     - "integration-tests/**/*"
 
@@ -22,7 +18,6 @@ tasks:
   build:
     command: "medusa build"
     inputs:
-      - "@group(next)"
       - "@group(sources)"
     outputs:
       - ".medusa"
