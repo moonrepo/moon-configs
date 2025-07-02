@@ -1,0 +1,162 @@
+$schema: "https://moonrepo.dev/schemas/tasks.json"
+
+fileGroups:
+  sources:
+    - "config/*"
+    - "database/**/*"
+    - "scripts/**/*"
+    - "src/**/*"
+  assets:
+    - "data/**/*"
+    - "public/**/*"
+    - "favicon.png"
+  tests: []
+
+tasks:
+  # Catch-all for any `strapi` command
+  strapi:
+    command: strapi
+    local: true
+
+  # Start Strapi in watch mode. (Changes in Strapi project files will trigger a server restart)
+  dev:
+    command: strapi develop
+    local: true
+
+  # Start Strapi without watch mode.
+  start:
+    command: strapi start
+    local: true
+    deps:
+      - "build"
+
+  # Build Strapi admin panel.
+  build:
+    command: strapi build
+    inputs:
+      - "@group(sources)"
+    outputs:
+      - "dist"
+
+  # Deploy Strapi project.
+  deploy:
+    command: pnpm strapi deploy
+    local: true
+
+  # Run Strapi console
+  console:
+    command: strapi console
+    local: true
+
+  admin-create:
+    command: strapi admin:create
+    local: true
+
+  admin-reset-password:
+    command: strapi admin:reset-password
+    local: true
+
+  components:
+    command: strapi components:list
+    local: true
+
+  config-dump:
+    command: strapi config:dump
+    local: true
+
+  config-restore:
+    command: strapi config:restore
+    local: true
+
+  content-types:
+    command: strapi content-types:list
+
+  controllers:
+    command: strapi controllers:list
+
+  generate:
+    command: strapi generate
+    local: true
+    options:
+      interactive: true
+
+  hooks:
+    command: strapi hooks:list
+
+  middlewares:
+    command: strapi middlewares:list
+
+  policies:
+    command: strapi policies:list
+
+  report:
+    command: strapi report
+    local: true
+
+  routes:
+    command: strapi routes:list
+
+  services:
+    command: strapi services:list
+
+  telemetry-disable:
+    command: strapi telemetry:disable
+    local: true
+
+  telemetry-enable:
+    command: strapi telemetry:enable
+    local: true
+
+  templates-generate:
+    command: strapi templates:generate
+    local: true
+    options:
+      interactive: true
+
+  ts-generate-types:
+    command: strapi ts:generate-types
+    local: true
+
+  export:
+    command: strapi export
+    outputs:
+      - "exported-data"
+
+  import:
+    command: strapi import
+
+  transfer:
+    command: strapi transfer
+    local: true
+    options:
+      interactive: true
+
+  link:
+    command: strapi link
+    local: true
+    options:
+      interactive: true
+
+  login:
+    command: strapi login
+    local: true
+    options:
+      interactive: true
+
+  logout:
+    command: strapi logout
+    local: true
+
+  cloud:
+    command: strapi cloud
+    local: true
+    options:
+      interactive: true
+
+  projects:
+    command: strapi projects
+    local: true
+
+  help:
+    command: strapi help
+    local: true

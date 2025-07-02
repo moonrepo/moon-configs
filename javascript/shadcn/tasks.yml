@@ -1,0 +1,50 @@
+$schema: "https://moonrepo.dev/schemas/tasks.json"
+
+fileGroups:
+  shadcn:
+    - "src/**/*"
+    - components.json
+  sources: []
+  tests: []
+
+tasks:
+  # Catch-all for any `shadcn` command
+  shadcn:
+    command: "shadcn"
+    local: true
+
+  init:
+    command: "shadcn init"
+    local: true
+
+  add:
+    command: "shadcn add"
+    local: true
+
+  diff:
+    command: "shadcn diff"
+    local: true
+
+  migrate:
+    command: "shadcn migrate"
+    local: true
+
+  info:
+    command: "shadcn info"
+    local: true
+
+  build:
+    command: "shadcn build"
+    local: true
+
+  registry-build:
+    command: "shadcn registry:build"
+    local: true
+
+  registry-mcp:
+    command: "shadcn registry:mcp"
+    local: true
+
+  help:
+    command: "shadcn help"
+    local: true

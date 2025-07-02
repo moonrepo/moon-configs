@@ -1,0 +1,72 @@
+$schema: "https://moonrepo.dev/schemas/tasks.json"
+
+fileGroups:
+  sources: 
+    - "src/**/*"
+    - "medusa-config.(js|ts)"
+    - "instrumentation.(js|ts)"
+  tests:
+    - "integration-tests/**/*"
+
+tasks:
+  # Catch-all for any `medusa` command
+  medusa:
+    command: "medusa"
+    local: true
+
+  # Build the application
+  build:
+    command: "medusa build"
+    inputs:
+      - "@group(sources)"
+    outputs:
+      - ".medusa"
+
+  # Run the development server
+  dev:
+    command: "medusa develop"
+    local: true
+
+  # Serve the built application
+  start:
+    command: "medusa start"
+    deps:
+      - "build"
+    local: true
+
+  # run medusa scripts
+  exec:
+    command: "medusa exec"
+    local: true
+
+  # Initialize the database
+  db-init:
+    command: "medusa db:setup"
+    local: true
+    options:
+      interactive: true
+
+  # create a database
+  db-create:
+    command: "medusa db:create"
+    local: true
+
+  # migrate the database
+  db-migrate:
+    command: "medusa db:migrate"
+    local: true
+
+  # migrate the database
+  db-generate:
+    command: "medusa db:generate"
+    local: true
+
+  # create a admin user
+  add-admin:
+    command: "medusa user"
+    local: true
+
+  # Disable telemetry
+  disable-telemetry:
+    command: "medusa telemetry --disable"
+    local: true
