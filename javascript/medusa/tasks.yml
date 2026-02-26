@@ -1,72 +1,79 @@
-$schema: "https://moonrepo.dev/schemas/tasks.json"
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
 
 fileGroups:
-  sources: 
-    - "src/**/*"
-    - "medusa-config.(js|ts)"
-    - "instrumentation.(js|ts)"
+  sources:
+    - 'src/**/*'
+    - 'medusa-config.(js|ts)'
+    - 'instrumentation.(js|ts)'
   tests:
-    - "integration-tests/**/*"
+    - 'integration-tests/**/*'
 
 tasks:
   # Catch-all for any `medusa` command
   medusa:
-    command: "medusa"
-    local: true
+    command: 'medusa'
+    options:
+      runInCI: false
 
   # Build the application
   build:
-    command: "medusa build"
+    command: 'medusa build'
     inputs:
-      - "@group(sources)"
+      - '@group(sources)'
     outputs:
-      - ".medusa"
+      - '.medusa'
 
   # Run the development server
   dev:
-    command: "medusa develop"
-    local: true
+    command: 'medusa develop'
+    preset: 'server'
 
   # Serve the built application
   start:
-    command: "medusa start"
+    command: 'medusa start'
     deps:
-      - "build"
-    local: true
+      - 'build'
+    preset: 'server'
 
   # run medusa scripts
   exec:
-    command: "medusa exec"
-    local: true
+    command: 'medusa exec'
+    options:
+      runInCI: false
 
   # Initialize the database
   db-init:
-    command: "medusa db:setup"
-    local: true
+    command: 'medusa db:setup'
     options:
+      runInCI: false
       interactive: true
 
   # create a database
   db-create:
-    command: "medusa db:create"
-    local: true
+    command: 'medusa db:create'
+    options:
+      runInCI: false
 
   # migrate the database
   db-migrate:
-    command: "medusa db:migrate"
-    local: true
+    command: 'medusa db:migrate'
+    options:
+      runInCI: false
 
   # migrate the database
   db-generate:
-    command: "medusa db:generate"
-    local: true
+    command: 'medusa db:generate'
+    options:
+      runInCI: false
 
   # create a admin user
   add-admin:
-    command: "medusa user"
-    local: true
+    command: 'medusa user'
+    options:
+      runInCI: false
 
   # Disable telemetry
   disable-telemetry:
-    command: "medusa telemetry --disable"
-    local: true
+    command: 'medusa telemetry --disable'
+    options:
+      runInCI: false

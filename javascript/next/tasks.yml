@@ -16,7 +16,8 @@ tasks:
   # Catch-all for any `next` command
   next:
     command: 'next'
-    local: true
+    options:
+      runInCI: false
 
   # Build the application
   build:
@@ -30,11 +31,11 @@ tasks:
   # Run the development server
   dev:
     command: 'next dev'
-    local: true
+    preset: 'server'
 
   # Serve the built application
   start:
     command: 'next start'
     deps:
       - 'build'
-    local: true
+    preset: 'server'

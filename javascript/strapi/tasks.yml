@@ -1,72 +1,80 @@
-$schema: "https://moonrepo.dev/schemas/tasks.json"
+$schema: 'https://moonrepo.dev/schemas/tasks.json'
 
 fileGroups:
   sources:
-    - "config/*"
-    - "database/**/*"
-    - "scripts/**/*"
-    - "src/**/*"
+    - 'config/*'
+    - 'database/**/*'
+    - 'scripts/**/*'
+    - 'src/**/*'
   assets:
-    - "data/**/*"
-    - "public/**/*"
-    - "favicon.png"
+    - 'data/**/*'
+    - 'public/**/*'
+    - 'favicon.png'
   tests: []
 
 tasks:
   # Catch-all for any `strapi` command
   strapi:
     command: strapi
-    local: true
+    options:
+      runInCI: false
 
   # Start Strapi in watch mode. (Changes in Strapi project files will trigger a server restart)
   dev:
     command: strapi develop
-    local: true
+    preset: 'server'
 
   # Start Strapi without watch mode.
   start:
     command: strapi start
-    local: true
+    preset: 'server'
     deps:
-      - "build"
+      - 'build'
 
   # Build Strapi admin panel.
   build:
     command: strapi build
     inputs:
-      - "@group(sources)"
+      - '@group(sources)'
     outputs:
-      - "dist"
+      - 'dist'
 
   # Deploy Strapi project.
   deploy:
-    command: pnpm strapi deploy
-    local: true
+    command: strapi deploy
+    options:
+      runInCI: false
 
   # Run Strapi console
   console:
     command: strapi console
-    local: true
+    options:
+      runInCI: false
 
   admin-create:
     command: strapi admin:create
-    local: true
+    options:
+      runInCI: false
 
   admin-reset-password:
     command: strapi admin:reset-password
-    local: true
+    options:
+      runInCI: false
 
   components:
     command: strapi components:list
-    local: true
+    options:
+      runInCI: false
 
   config-dump:
     command: strapi config:dump
-    local: true
+    options:
+      runInCI: false
 
   config-restore:
     command: strapi config:restore
-    local: true
+    options:
+      runInCI: false
 
   content-types:
     command: strapi content-types:list
@@ -76,8 +84,8 @@ tasks:
 
   generate:
     command: strapi generate
-    local: true
     options:
+      runInCI: false
       interactive: true
 
   hooks:
@@ -91,7 +99,8 @@ tasks:
 
   report:
     command: strapi report
-    local: true
+    options:
+      runInCI: false
 
   routes:
     command: strapi routes:list
@@ -101,62 +110,68 @@ tasks:
 
   telemetry-disable:
     command: strapi telemetry:disable
-    local: true
+    options:
+      runInCI: false
 
   telemetry-enable:
     command: strapi telemetry:enable
-    local: true
+    options:
+      runInCI: false
 
   templates-generate:
     command: strapi templates:generate
-    local: true
     options:
+      runInCI: false
       interactive: true
 
   ts-generate-types:
     command: strapi ts:generate-types
-    local: true
+    options:
+      runInCI: false
 
   export:
     command: strapi export
     outputs:
-      - "exported-data"
+      - 'exported-data'
 
   import:
     command: strapi import
 
   transfer:
     command: strapi transfer
-    local: true
     options:
+      runInCI: false
       interactive: true
 
   link:
     command: strapi link
-    local: true
     options:
+      runInCI: false
       interactive: true
 
   login:
     command: strapi login
-    local: true
     options:
+      runInCI: false
       interactive: true
 
   logout:
     command: strapi logout
-    local: true
+    options:
+      runInCI: false
 
   cloud:
     command: strapi cloud
-    local: true
     options:
+      runInCI: false
       interactive: true
 
   projects:
     command: strapi projects
-    local: true
+    options:
+      runInCI: false
 
   help:
     command: strapi help
-    local: true
+    options:
+      runInCI: false

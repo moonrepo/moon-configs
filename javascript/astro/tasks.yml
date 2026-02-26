@@ -13,7 +13,8 @@ tasks:
   # Catch-all for any `astro` command
   astro:
     command: 'astro'
-    local: true
+    options:
+      runInCI: false
 
   # Build the application
   build:
@@ -34,11 +35,11 @@ tasks:
   # Run the development server
   dev:
     command: 'astro dev'
-    local: true
+    preset: 'server'
 
   # Serve the built application
   preview:
     command: 'astro preview'
     deps:
       - 'build'
-    local: true
+    preset: 'server'

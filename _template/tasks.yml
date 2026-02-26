@@ -8,4 +8,5 @@ fileGroups:
 tasks:
   <bin>:
     command: '<bin>'
-    local: true
+    options:
+      runInCI: false
