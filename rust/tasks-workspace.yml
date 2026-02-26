@@ -18,7 +18,8 @@ fileGroups:
 tasks:
   cargo:
     command: 'cargo'
-    local: true
+    options:
+      persistent: true
 
   build: &build
     command: 'cargo build'
@@ -31,7 +32,8 @@ tasks:
   build-release:
     <<: *build
     command: 'cargo build --release'
-    local: true
+    options:
+      persistent: true
 
   check:
     command: 'cargo check --workspace --all-targets'
@@ -46,7 +48,8 @@ tasks:
     inputs:
       - '@group(cargo)'
       - '@group(sources)'
-    local: true
+    options:
+      persistent: true
     env: *env
 
   format: &format
@@ -61,7 +64,8 @@ tasks:
   format-write:
     <<: *format
     command: 'cargo fmt --all -- --emit=files'
-    local: true
+    options:
+      persistent: true
 
   lint: &lint
     command: 'cargo clippy --workspace --all-targets'
@@ -75,7 +79,8 @@ tasks:
   lint-fix:
     <<: *lint
     command: 'cargo clippy --workspace --all-targets --fix --allow-dirty --allow-staged'
-    local: true
+    options:
+      persistent: true
 
   test:
     command: 'cargo nextest run --workspace'
